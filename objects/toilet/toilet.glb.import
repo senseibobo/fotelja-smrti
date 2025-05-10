@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ndq4jmibytin"
-path="res://.godot/imported/tvshelf.glb-b3dec4f6a87dd97a8f89248cc0b5de5c.scn"
+uid="uid://cujqfprublb35"
+path="res://.godot/imported/toilet.glb-996768dc644306fc5364a1462111adb2.scn"
 
 [deps]
 
-source_file="res://tv/shelf/tvshelf.glb"
-dest_files=["res://.godot/imported/tvshelf.glb-b3dec4f6a87dd97a8f89248cc0b5de5c.scn"]
+source_file="res://objects/toilet/toilet.glb"
+dest_files=["res://.godot/imported/toilet.glb-996768dc644306fc5364a1462111adb2.scn"]
 
 [params]
 

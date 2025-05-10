@@ -1,12 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://pfix7orqgna"]
+[gd_scene load_steps=17 format=3 uid="uid://pfix7orqgna"]
 
 [ext_resource type="Script" uid="uid://26b00e6oi77x" path="res://room/room.gd" id="1_fntg6"]
 [ext_resource type="PackedScene" uid="uid://nf5a3sjovupa" path="res://player/player.tscn" id="1_ppkfq"]
 [ext_resource type="Texture2D" uid="uid://dj1l6fkok5pyd" path="res://icon.svg" id="2_j33j0"]
-[ext_resource type="PackedScene" uid="uid://fko0x41bn1in" path="res://armchair/armchair.tscn" id="3_fsy70"]
-[ext_resource type="PackedScene" uid="uid://bbhane6h8syip" path="res://tv/tv.tscn" id="4_tku2a"]
-[ext_resource type="PackedScene" uid="uid://8ewi7j66mf0r" path="res://toilet/toilet.tscn" id="5_et4wo"]
-[ext_resource type="PackedScene" uid="uid://ndq4jmibytin" path="res://tv/shelf/tvshelf.glb" id="5_qx3y5"]
+[ext_resource type="PackedScene" uid="uid://fko0x41bn1in" path="res://objects/armchair/armchair.tscn" id="3_fsy70"]
+[ext_resource type="PackedScene" uid="uid://bbhane6h8syip" path="res://objects/tv/tv.tscn" id="4_tku2a"]
+[ext_resource type="PackedScene" uid="uid://8ewi7j66mf0r" path="res://objects/toilet/toilet.tscn" id="5_et4wo"]
+[ext_resource type="PackedScene" uid="uid://ndq4jmibytin" path="res://objects/shelf/tvshelf.glb" id="5_qx3y5"]
+[ext_resource type="PackedScene" uid="uid://4xxwbli7paku" path="res://objects/door/door.tscn" id="8_cy34l"]
+[ext_resource type="PackedScene" uid="uid://oqcdvo3e3m2u" path="res://objects/oven/oven.tscn" id="9_lbx1e"]
+[ext_resource type="PackedScene" uid="uid://bgj2jslfgalax" path="res://objects/sink/sink.tscn" id="10_0i02g"]
+[ext_resource type="PackedScene" uid="uid://c30wjs7da7sd4" path="res://objects/fridge/fridge.tscn" id="11_wid0f"]
+[ext_resource type="PackedScene" uid="uid://b0ccnjqbecypt" path="res://objects/ceiling_light/ceiling_light.tscn" id="12_158eg"]
+[ext_resource type="PackedScene" uid="uid://rr0xq1axrxvj" path="res://objects/table/table.tscn" id="13_t7mnq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fsy70"]
 panorama = ExtResource("2_j33j0")
@@ -30,15 +36,15 @@ tv = NodePath("tvshelf/TV")
 environment = SubResource("Environment_qx3y5")
 
 [node name="Armchair" parent="." instance=ExtResource("3_fsy70")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52811, 0, 0.788733)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52811, 0, -0.246397)
 
 [node name="RoomLayout" type="CSGCombiner3D" parent="."]
 use_collision = true
 
 [node name="LivingRoom" type="CSGBox3D" parent="RoomLayout"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66901, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28733, 1.66901, -0.560576)
 flip_faces = true
-size = Vector3(7.705, 3.31, 5.38)
+size = Vector3(5.13033, 3.31, 4.25885)
 
 [node name="Bathroom" type="CSGBox3D" parent="RoomLayout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72235, 1.66901, -1.26188)
@@ -46,19 +52,19 @@ flip_faces = true
 size = Vector3(3.31419, 3.31, 3.2561)
 
 [node name="Kitchen" type="CSGBox3D" parent="RoomLayout"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63108, 1.66901, -5.81291)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.701074, 1.66901, -4.96644)
 flip_faces = true
-size = Vector3(4.44283, 3.31, 5.38)
+size = Vector3(1.96556, 3.31, 3.68707)
 
 [node name="KitchenDoorway" type="CSGBox3D" parent="RoomLayout"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.923, 1.01156, -2.83732)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.647791, 1.01165, -2.83732)
 flip_faces = true
-size = Vector3(1.14087, 2.45288, 0.705)
+size = Vector3(0.7, 2, 0.705)
 
 [node name="BathroomDoorway" type="CSGBox3D" parent="RoomLayout"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88043, 0.987702, -1.44131)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88043, 1.00397, -1.44131)
 flip_faces = true
-size = Vector3(0.399414, 2.45288, 1.08594)
+size = Vector3(0.399, 2, 0.7)
 
 [node name="Floor" type="CSGBox3D" parent="RoomLayout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05369, -0.239319, -2.85864)
@@ -70,10 +76,31 @@ size = Vector3(27.4585, 0.521362, 15.2037)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78211, 0.0213624, -1.9065)
 
 [node name="tvshelf" parent="." instance=ExtResource("5_qx3y5")]
-transform = Transform3D(-3.28344e-08, 0, 0.751163, 0, 0.751163, 0, -0.751163, 0, -3.28344e-08, 1.46461, 0.379431, 2.31963)
+transform = Transform3D(-3.28344e-08, 0, 0.751163, 0, 0.751163, 0, -0.751163, 0, -3.28344e-08, 1.46461, 0.379431, 1.2845)
 
 [node name="TV" parent="tvshelf" instance=ExtResource("4_tku2a")]
 transform = Transform3D(1.33127, 0, -7.10543e-15, 0, 1.33127, 0, 7.10543e-15, 0, 1.33127, 0.00916323, 0.509217, 0.0800091)
+
+[node name="Door" parent="." instance=ExtResource("8_cy34l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.86449, 0.0347809, -1.79243)
+
+[node name="Door2" parent="." instance=ExtResource("8_cy34l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303832, 0.0251572, -2.675)
+
+[node name="Oven" parent="." instance=ExtResource("9_lbx1e")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00839186, 0.0213621, -6.50425)
+
+[node name="Sink" parent="." instance=ExtResource("10_0i02g")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.715812, 0.0231394, -6.49677)
+
+[node name="Fridge" parent="." instance=ExtResource("11_wid0f")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.39706, 0.0213621, -6.46096)
+
+[node name="CeilingLight" parent="." instance=ExtResource("12_158eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00884551, 3.32463, -0.190936)
+
+[node name="Table" parent="." instance=ExtResource("13_t7mnq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.265872, 0.0614551, -1.42286)
 
 [connection signal="channel_back" from="Player" to="tvshelf/TV" method="previous_channel"]
 [connection signal="channel_forward" from="Player" to="tvshelf/TV" method="next_channel"]

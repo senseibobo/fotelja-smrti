@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://fko0x41bn1in"]
 
-[ext_resource type="Script" uid="uid://bc22y38gklmwb" path="res://armchair/armchair.gd" id="1_ty3mv"]
+[ext_resource type="Script" uid="uid://bc22y38gklmwb" path="res://objects/armchair/armchair.gd" id="1_ty3mv"]
 [ext_resource type="Script" uid="uid://c6jk8oawpafxy" path="res://interactable/interactable.gd" id="1_yjg7x"]
-[ext_resource type="PackedScene" uid="uid://7iolcusuf8r7" path="res://armchair/armchair.glb" id="2_63l2a"]
+[ext_resource type="PackedScene" uid="uid://7iolcusuf8r7" path="res://objects/armchair/armchair.glb" id="2_63l2a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_63l2a"]
 size = Vector3(0.605469, 0.772247, 0.136169)

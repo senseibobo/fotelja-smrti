@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgj2jslfgalax"]
+
+[ext_resource type="PackedScene" uid="uid://u4qjg01k5qvl" path="res://objects/sink/sink.glb" id="1_h1ss2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h1ss2"]
+size = Vector3(0.619385, 0.833984, 0.799805)
+
+[node name="Sink" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="sink" parent="StaticBody3D" instance=ExtResource("1_h1ss2")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.420962, 0)
+shape = SubResource("BoxShape3D_h1ss2")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://4xxwbli7paku"]
+
+[ext_resource type="Script" uid="uid://bmxov0vlve2my" path="res://objects/door/door.gd" id="1_y765d"]
+[ext_resource type="Script" uid="uid://c6jk8oawpafxy" path="res://interactable/interactable.gd" id="2_ln868"]
+[ext_resource type="PackedScene" uid="uid://durir4py0exc4" path="res://objects/door/door.glb" id="3_58wfd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y765d"]
+size = Vector3(0.735596, 1.93015, 0.0217285)
+
+[node name="Door" type="Node3D" node_paths=PackedStringArray("static_body")]
+script = ExtResource("1_y765d")
+static_body = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("2_ln868")
+
+[node name="door" parent="StaticBody3D" instance=ExtResource("3_58wfd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.337769, 1.01534, 0)
+shape = SubResource("BoxShape3D_y765d")
+
+[connection signal="interacted" from="StaticBody3D" to="." method="_on_static_body_3d_interacted"]

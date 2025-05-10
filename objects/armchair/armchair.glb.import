@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cujqfprublb35"
-path="res://.godot/imported/toilet.glb-feff9756cdc5e87317da19155eb417ed.scn"
+uid="uid://7iolcusuf8r7"
+path="res://.godot/imported/armchair.glb-9d2ca8ed3313d8e37cd40c3be8e8baee.scn"
 
 [deps]
 
-source_file="res://toilet/toilet.glb"
-dest_files=["res://.godot/imported/toilet.glb-feff9756cdc5e87317da19155eb417ed.scn"]
+source_file="res://objects/armchair/armchair.glb"
+dest_files=["res://.godot/imported/armchair.glb-9d2ca8ed3313d8e37cd40c3be8e8baee.scn"]
 
 [params]
 

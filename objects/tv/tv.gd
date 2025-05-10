@@ -3,12 +3,12 @@ extends Node3D
 
 
 const channels: Array[VideoStreamTheora] = [
-	preload("res://tv/channels/152.0-245.0.ogv"),
-	preload("res://tv/channels/1917.0-2172.0.ogv"),
-	preload("res://tv/channels/Alo, predsedniče... - Nikad izvini.ogv"),
-	preload("res://tv/channels/Džudžubana viski - Nikad izvini.ogv"),
-	preload("res://tv/channels/gen z meme compilation.ogv"),
-	preload("res://tv/channels/Tralalero tralala VS Lirili Larila.ogv"),
+	preload("res://objects/tv/channels/152.0-245.0.ogv"),
+	preload("res://objects/tv/channels/1917.0-2172.0.ogv"),
+	preload("res://objects/tv/channels/Alo, predsedniče... - Nikad izvini.ogv"),
+	preload("res://objects/tv/channels/Džudžubana viski - Nikad izvini.ogv"),
+	preload("res://objects/tv/channels/gen z meme compilation.ogv"),
+	preload("res://objects/tv/channels/Tralalero tralala VS Lirili Larila.ogv"),
 ]
 
 @export var stream_player: VideoStreamPlayer
@@ -28,7 +28,7 @@ func previous_channel():
 
 
 func turn_on():
-	stream_player.play()
+	set_channel(current_channel)
 
 
 func turn_off():

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be36faadlf4u"
-path.s3tc="res://.godot/imported/tvshelf_wood.png-7a840ddf64f9425b478ad1368a715964.s3tc.ctex"
+uid="uid://bnk5dhq7vyhyf"
+path.s3tc="res://.godot/imported/table_table.png-78a35fba4a79df8cb716c783efc79afd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9fcd75df070254c19043d0b3e8cd209a"
+"md5": "ff4f88b1c861a25c00270fb9d9f1e238"
 }
 
 [deps]
 
-source_file="res://tv/shelf/tvshelf_wood.png"
-dest_files=["res://.godot/imported/tvshelf_wood.png-7a840ddf64f9425b478ad1368a715964.s3tc.ctex"]
+source_file="res://objects/table/table_table.png"
+dest_files=["res://.godot/imported/table_table.png-78a35fba4a79df8cb716c783efc79afd.s3tc.ctex"]
 
 [params]
 

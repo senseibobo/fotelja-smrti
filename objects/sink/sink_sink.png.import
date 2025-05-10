@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://omolwwkd1g6x"
-path.s3tc="res://.godot/imported/toilet_toilet.png-1e9cff1fb22c19a65347ff7ab02973b5.s3tc.ctex"
+uid="uid://igpninoi0m76"
+path.s3tc="res://.godot/imported/sink_sink.png-5a38ed8df384150a76c93287539fc7ea.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d5abe336cceea714b477932b04dcb826"
+"md5": "bdac9d2b7b705a8aa4f8d32c1b76122d"
 }
 
 [deps]
 
-source_file="res://toilet/toilet_toilet.png"
-dest_files=["res://.godot/imported/toilet_toilet.png-1e9cff1fb22c19a65347ff7ab02973b5.s3tc.ctex"]
+source_file="res://objects/sink/sink_sink.png"
+dest_files=["res://.godot/imported/sink_sink.png-5a38ed8df384150a76c93287539fc7ea.s3tc.ctex"]
 
 [params]
 

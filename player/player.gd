@@ -83,7 +83,11 @@ func check_interactables():
 
 
 func sit(armchair: Armchair):
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	collision_layer = 0
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	tv_on.emit()
 	global_position = armchair.global_position 
 	global_position.y -= 0.5
@@ -94,12 +98,16 @@ func sit(armchair: Armchair):
 
 
 func stand_up():
-	collision_layer = 1
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	tv_off.emit()
 	global_position -= global_basis.z*0.5
 	global_position.y += 0.5
 	state = State.WALKING
 	switch_channel_label.visible = false
+	collision_layer = 1
 
 
 func start_pissing(toilet: Toilet):
