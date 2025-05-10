@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://pfix7orqgna"]
+
+[ext_resource type="Script" uid="uid://26b00e6oi77x" path="res://room/room.gd" id="1_fntg6"]
+[ext_resource type="PackedScene" uid="uid://nf5a3sjovupa" path="res://player/player.tscn" id="1_ppkfq"]
+[ext_resource type="Texture2D" uid="uid://dj1l6fkok5pyd" path="res://icon.svg" id="2_j33j0"]
+[ext_resource type="PackedScene" uid="uid://fko0x41bn1in" path="res://armchair/armchair.tscn" id="3_fsy70"]
+[ext_resource type="PackedScene" uid="uid://bbhane6h8syip" path="res://tv/tv.tscn" id="4_tku2a"]
+[ext_resource type="PackedScene" uid="uid://8ewi7j66mf0r" path="res://toilet/toilet.tscn" id="5_et4wo"]
+[ext_resource type="PackedScene" uid="uid://ndq4jmibytin" path="res://tv/shelf/tvshelf.glb" id="5_qx3y5"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fsy70"]
+panorama = ExtResource("2_j33j0")
+
+[sub_resource type="Sky" id="Sky_tku2a"]
+sky_material = SubResource("PanoramaSkyMaterial_fsy70")
+
+[sub_resource type="Environment" id="Environment_qx3y5"]
+background_mode = 2
+sky = SubResource("Sky_tku2a")
+
+[node name="Room" type="Node3D" node_paths=PackedStringArray("player", "armchair", "tv")]
+script = ExtResource("1_fntg6")
+player = NodePath("Player")
+armchair = NodePath("Armchair")
+tv = NodePath("tvshelf/TV")
+
+[node name="Player" parent="." instance=ExtResource("1_ppkfq")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qx3y5")
+
+[node name="Armchair" parent="." instance=ExtResource("3_fsy70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52811, 0, 0.788733)
+
+[node name="RoomLayout" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="LivingRoom" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66901, 0)
+flip_faces = true
+size = Vector3(7.705, 3.31, 5.38)
+
+[node name="Bathroom" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72235, 1.66901, -1.26188)
+flip_faces = true
+size = Vector3(3.31419, 3.31, 3.2561)
+
+[node name="Kitchen" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63108, 1.66901, -5.81291)
+flip_faces = true
+size = Vector3(4.44283, 3.31, 5.38)
+
+[node name="KitchenDoorway" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.923, 1.01156, -2.83732)
+flip_faces = true
+size = Vector3(1.14087, 2.45288, 0.705)
+
+[node name="BathroomDoorway" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88043, 0.987702, -1.44131)
+flip_faces = true
+size = Vector3(0.399414, 2.45288, 1.08594)
+
+[node name="Floor" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05369, -0.239319, -2.85864)
+operation = 2
+flip_faces = true
+size = Vector3(27.4585, 0.521362, 15.2037)
+
+[node name="Toilet" parent="RoomLayout" instance=ExtResource("5_et4wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78211, 0.0213624, -1.9065)
+
+[node name="tvshelf" parent="." instance=ExtResource("5_qx3y5")]
+transform = Transform3D(-3.28344e-08, 0, 0.751163, 0, 0.751163, 0, -0.751163, 0, -3.28344e-08, 1.46461, 0.379431, 2.31963)
+
+[node name="TV" parent="tvshelf" instance=ExtResource("4_tku2a")]
+transform = Transform3D(1.33127, 0, -7.10543e-15, 0, 1.33127, 0, 7.10543e-15, 0, 1.33127, 0.00916323, 0.509217, 0.0800091)
+
+[connection signal="channel_back" from="Player" to="tvshelf/TV" method="previous_channel"]
+[connection signal="channel_forward" from="Player" to="tvshelf/TV" method="next_channel"]
+[connection signal="tv_off" from="Player" to="tvshelf/TV" method="turn_off"]
+[connection signal="tv_on" from="Player" to="tvshelf/TV" method="turn_on"]

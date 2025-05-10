@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://nf5a3sjovupa"]
+
+[ext_resource type="Script" uid="uid://bkg7dwgs1xmoc" path="res://player/player.gd" id="1_oul6g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8pnx4"]
+radius = 0.2
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
+radius = 0.2
+height = 1.8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oul6g"]
+direction = Vector3(0, 0, -1)
+spread = 3.066
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkbax"]
+transparency = 1
+albedo_color = Color(0.8, 0.756863, 0, 0.533333)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_g1dw6"]
+material = SubResource("StandardMaterial3D_rkbax")
+size = Vector2(0.07, 0.11)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "interact_raycast", "interact_label", "switch_channel_label", "pissing_particles")]
+script = ExtResource("1_oul6g")
+camera = NodePath("Camera3D")
+interact_raycast = NodePath("Camera3D/InteractRaycast")
+interact_label = NodePath("HUD/Control/InteractLabel")
+switch_channel_label = NodePath("HUD/Control/SwitchChannelLabel")
+pissing_particles = NodePath("PissingParticles")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_8pnx4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_kqu6x")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60033, 0)
+
+[node name="InteractRaycast" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -3.04)
+collide_with_areas = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InteractLabel" type="Label" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 46
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SwitchChannelLabel" type="Label" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -332.0
+offset_top = -108.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "A - Previous Channel
+D - Next Channel"
+
+[node name="PissingParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.782622, 0)
+amount = 26
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_oul6g")
+draw_pass_1 = SubResource("QuadMesh_g1dw6")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbhane6h8syip"]
+
+[ext_resource type="PackedScene" uid="uid://n6botcel8v37" path="res://tv/tv.glb" id="1_c6e4l"]
+[ext_resource type="Script" uid="uid://cblwpfishu4uy" path="res://tv/tv.gd" id="1_l6qfx"]
+[ext_resource type="VideoStream" uid="uid://v3nqsfnb4ms6" path="res://tv/channels/Džudžubana viski - Nikad izvini.ogv" id="2_1y351"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1y351"]
+viewport_path = NodePath("ScreenViewport")
+
+[node name="TV" type="Node3D" node_paths=PackedStringArray("stream_player")]
+script = ExtResource("1_l6qfx")
+stream_player = NodePath("ScreenViewport/Control/VideoStreamPlayer")
+
+[node name="tv" parent="." instance=ExtResource("1_c6e4l")]
+
+[node name="ScreenSprite" type="Sprite3D" parent="."]
+transform = Transform3D(-1.20646e-08, 0, 0.276007, 0, 0.276007, 0, -0.276007, 0, -1.20646e-08, 0.0121785, 0.304848, -0.00963593)
+texture = SubResource("ViewportTexture_1y351")
+
+[node name="ScreenViewport" type="SubViewport" parent="."]
+size = Vector2i(320, 180)
+
+[node name="Control" type="Control" parent="ScreenViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ScreenViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_1y351")
+autoplay = true
+expand = true
