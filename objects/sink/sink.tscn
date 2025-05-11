@@ -1,16 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgj2jslfgalax"]
+[gd_scene load_steps=5 format=3 uid="uid://bgj2jslfgalax"]
 
+[ext_resource type="Script" uid="uid://hwj7apj0hhpj" path="res://objects/sink/sink.gd" id="1_gxkda"]
 [ext_resource type="PackedScene" uid="uid://u4qjg01k5qvl" path="res://objects/sink/sink.glb" id="1_h1ss2"]
+[ext_resource type="Script" uid="uid://c6jk8oawpafxy" path="res://interactable/interactable.gd" id="2_231um"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1ss2"]
 size = Vector3(0.619385, 0.833984, 0.799805)
 
 [node name="Sink" type="Node3D"]
+script = ExtResource("1_gxkda")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("2_231um")
 
 [node name="sink" parent="StaticBody3D" instance=ExtResource("1_h1ss2")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.420962, 0)
 shape = SubResource("BoxShape3D_h1ss2")
+
+[connection signal="interacted" from="StaticBody3D" to="." method="_on_static_body_3d_interacted"]

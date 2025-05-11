@@ -1,28 +1,72 @@
-[gd_scene load_steps=17 format=3 uid="uid://pfix7orqgna"]
+[gd_scene load_steps=29 format=3 uid="uid://pfix7orqgna"]
 
 [ext_resource type="Script" uid="uid://26b00e6oi77x" path="res://room/room.gd" id="1_fntg6"]
 [ext_resource type="PackedScene" uid="uid://nf5a3sjovupa" path="res://player/player.tscn" id="1_ppkfq"]
-[ext_resource type="Texture2D" uid="uid://dj1l6fkok5pyd" path="res://icon.svg" id="2_j33j0"]
 [ext_resource type="PackedScene" uid="uid://fko0x41bn1in" path="res://objects/armchair/armchair.tscn" id="3_fsy70"]
 [ext_resource type="PackedScene" uid="uid://bbhane6h8syip" path="res://objects/tv/tv.tscn" id="4_tku2a"]
+[ext_resource type="Texture2D" uid="uid://iitmd0fxoi3p" path="res://room/wallTexture.png" id="5_acpa7"]
 [ext_resource type="PackedScene" uid="uid://8ewi7j66mf0r" path="res://objects/toilet/toilet.tscn" id="5_et4wo"]
+[ext_resource type="Texture2D" uid="uid://1vw1vhc7atje" path="res://room/wallTextureNormal.png" id="5_hhhe8"]
 [ext_resource type="PackedScene" uid="uid://ndq4jmibytin" path="res://objects/shelf/tvshelf.glb" id="5_qx3y5"]
+[ext_resource type="Texture2D" uid="uid://bxb5rhlhjhw0g" path="res://room/bathroomTilesTexture.png" id="6_ltqu5"]
+[ext_resource type="Texture2D" uid="uid://1r5sxj1sky5s" path="res://room/kitchenTexture.png" id="7_ew6p8"]
+[ext_resource type="Texture2D" uid="uid://domttwl2er84k" path="res://room/bathroomTilesTextureNormal.png" id="7_ylgym"]
 [ext_resource type="PackedScene" uid="uid://4xxwbli7paku" path="res://objects/door/door.tscn" id="8_cy34l"]
+[ext_resource type="Texture2D" uid="uid://dsqqoch6ig1ko" path="res://room/floorTexture.png" id="8_hhhe8"]
 [ext_resource type="PackedScene" uid="uid://oqcdvo3e3m2u" path="res://objects/oven/oven.tscn" id="9_lbx1e"]
 [ext_resource type="PackedScene" uid="uid://bgj2jslfgalax" path="res://objects/sink/sink.tscn" id="10_0i02g"]
+[ext_resource type="Texture2D" uid="uid://b873yhxvcdx5n" path="res://room/floorTextureNormal.png" id="10_1f5bx"]
 [ext_resource type="PackedScene" uid="uid://c30wjs7da7sd4" path="res://objects/fridge/fridge.tscn" id="11_wid0f"]
 [ext_resource type="PackedScene" uid="uid://b0ccnjqbecypt" path="res://objects/ceiling_light/ceiling_light.tscn" id="12_158eg"]
 [ext_resource type="PackedScene" uid="uid://rr0xq1axrxvj" path="res://objects/table/table.tscn" id="13_t7mnq"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fsy70"]
-panorama = ExtResource("2_j33j0")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ew6p8"]
+sky_top_color = Color(0, 0.00933332, 0.28, 1)
 
-[sub_resource type="Sky" id="Sky_tku2a"]
-sky_material = SubResource("PanoramaSkyMaterial_fsy70")
+[sub_resource type="Sky" id="Sky_hhhe8"]
+sky_material = SubResource("ProceduralSkyMaterial_ew6p8")
 
 [sub_resource type="Environment" id="Environment_qx3y5"]
 background_mode = 2
-sky = SubResource("Sky_tku2a")
+background_energy_multiplier = 0.6
+sky = SubResource("Sky_hhhe8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltqu5"]
+albedo_texture = ExtResource("5_acpa7")
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("5_hhhe8")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhhe8"]
+albedo_texture = ExtResource("5_acpa7")
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("5_hhhe8")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew6p8"]
+albedo_texture = ExtResource("6_ltqu5")
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("7_ylgym")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylgym"]
+albedo_texture = ExtResource("7_ew6p8")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f5bx"]
+albedo_texture = ExtResource("8_hhhe8")
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("10_1f5bx")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7mnq"]
+albedo_texture = ExtResource("5_acpa7")
+normal_enabled = true
+uv1_triplanar = true
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("player", "armchair", "tv")]
 script = ExtResource("1_fntg6")
@@ -45,16 +89,25 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28733, 1.66901, -0.560576)
 flip_faces = true
 size = Vector3(5.13033, 3.31, 4.25885)
+material = SubResource("StandardMaterial3D_ltqu5")
 
-[node name="Bathroom" type="CSGBox3D" parent="RoomLayout"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72235, 1.66901, -1.26188)
+[node name="BathroomWall" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72235, 2.61097, -1.26188)
 flip_faces = true
-size = Vector3(3.31419, 3.31, 3.2561)
+size = Vector3(3.31419, 1.42607, 3.2561)
+material = SubResource("StandardMaterial3D_hhhe8")
+
+[node name="BathroomTiles" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73614, 0.978642, -1.26188)
+flip_faces = true
+size = Vector3(3.24023, 1.91628, 3.17993)
+material = SubResource("StandardMaterial3D_ew6p8")
 
 [node name="Kitchen" type="CSGBox3D" parent="RoomLayout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.701074, 1.66901, -4.96644)
 flip_faces = true
 size = Vector3(1.96556, 3.31, 3.68707)
+material = SubResource("StandardMaterial3D_ylgym")
 
 [node name="KitchenDoorway" type="CSGBox3D" parent="RoomLayout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.647791, 1.01165, -2.83732)
@@ -62,15 +115,23 @@ flip_faces = true
 size = Vector3(0.7, 2, 0.705)
 
 [node name="BathroomDoorway" type="CSGBox3D" parent="RoomLayout"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88043, 1.00397, -1.44131)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97935, 1.00397, -1.44131)
 flip_faces = true
-size = Vector3(0.399, 2, 0.7)
+size = Vector3(0.596839, 2, 0.7)
 
 [node name="Floor" type="CSGBox3D" parent="RoomLayout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05369, -0.239319, -2.85864)
 operation = 2
 flip_faces = true
 size = Vector3(27.4585, 0.521362, 15.2037)
+material = SubResource("StandardMaterial3D_1f5bx")
+
+[node name="Ceiling" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05369, 3.57272, -2.85864)
+operation = 2
+flip_faces = true
+size = Vector3(27.4585, 0.521362, 15.2037)
+material = SubResource("StandardMaterial3D_t7mnq")
 
 [node name="Toilet" parent="RoomLayout" instance=ExtResource("5_et4wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78211, 0.0213624, -1.9065)
@@ -96,11 +157,20 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.715812
 [node name="Fridge" parent="." instance=ExtResource("11_wid0f")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.39706, 0.0213621, -6.46096)
 
-[node name="CeilingLight" parent="." instance=ExtResource("12_158eg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00884551, 3.32463, -0.190936)
+[node name="CeilingLight" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_158eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20032, 3.30136, -0.181468)
+player = NodePath("../Player")
+
+[node name="CeilingLight2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_158eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735683, 3.30136, -4.67787)
+player = NodePath("../Player")
+
+[node name="CeilingLight3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_158eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64593, 3.30136, -1.16578)
+player = NodePath("../Player")
 
 [node name="Table" parent="." instance=ExtResource("13_t7mnq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.265872, 0.0614551, -1.42286)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.121357, 0.0614551, -0.593084)
 
 [connection signal="channel_back" from="Player" to="tvshelf/TV" method="previous_channel"]
 [connection signal="channel_forward" from="Player" to="tvshelf/TV" method="next_channel"]

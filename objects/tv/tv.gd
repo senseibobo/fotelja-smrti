@@ -13,7 +13,7 @@ const channels: Array[VideoStreamTheora] = [
 
 @export var stream_player: VideoStreamPlayer
 
-var current_channel: int
+var current_channel: int = 3
 
 func _ready():
 	turn_off()

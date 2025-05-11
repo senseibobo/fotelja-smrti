@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="foteljasmrti"
-run/main_scene="uid://pfix7orqgna"
+run/main_scene="uid://ch1yvghipbqlx"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Transition="*res://autoload/transition.tscn"
 
 [display]
 

@@ -1,16 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c30wjs7da7sd4"]
+[gd_scene load_steps=5 format=3 uid="uid://c30wjs7da7sd4"]
 
+[ext_resource type="Script" uid="uid://bv77ls3bmsvaf" path="res://objects/fridge/fridge.gd" id="1_7pdpv"]
+[ext_resource type="Script" uid="uid://c6jk8oawpafxy" path="res://interactable/interactable.gd" id="1_chjg3"]
 [ext_resource type="PackedScene" uid="uid://dem07b75csesp" path="res://objects/fridge/fridge.glb" id="1_w6313"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6313"]
 size = Vector3(0.594727, 1.63824, 0.554688)
 
 [node name="Fridge" type="Node3D"]
+script = ExtResource("1_7pdpv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("1_chjg3")
 
 [node name="fridge" parent="StaticBody3D" instance=ExtResource("1_w6313")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831761, 0)
 shape = SubResource("BoxShape3D_w6313")
+
+[connection signal="interacted" from="StaticBody3D" to="." method="_on_static_body_3d_interacted"]
