@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1r5sxj1sky5s"
-path.s3tc="res://.godot/imported/kitchenTexture.png-a99f255541d922326fce218ef01ebcdb.s3tc.ctex"
+uid="uid://dmekbch64x56h"
+path.s3tc="res://.godot/imported/picture_frame.png-6d099f116bbf46cb8b3dc8d305088ed3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://room/kitchenTexture.png"
-dest_files=["res://.godot/imported/kitchenTexture.png-a99f255541d922326fce218ef01ebcdb.s3tc.ctex"]
+source_file="res://room/textures/pictures/picture_frame.png"
+dest_files=["res://.godot/imported/picture_frame.png-6d099f116bbf46cb8b3dc8d305088ed3.s3tc.ctex"]
 
 [params]
 

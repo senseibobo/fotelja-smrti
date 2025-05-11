@@ -21,6 +21,13 @@ enum State {
 @export var pissing_particles: GPUParticles3D
 @export var blood_overlay: BloodOverlay
 @export var animation_player: AnimationPlayer
+
+
+@export var piss_sound_player: AudioStreamPlayer3D
+@export var standup_sound_player: AudioStreamPlayer
+@export var insanity_sound_player: AudioStreamPlayer
+@export var sit_sound_player: AudioStreamPlayer3D
+
 @export var speed: float = 1.6
 
 var hunger: float = 0.0
@@ -38,6 +45,9 @@ var piss_rate: float = 0.0035
 
 
 var state: State = State.WALKING
+
+var camera_fov_tween: Tween
+var sitting_tween: Tween
 
 
 func _ready():
@@ -109,6 +119,9 @@ func _unhandled_input(event: InputEvent):
 
 
 func check_interactables():
+	if state != State.WALKING:
+		interact_label.visible = false
+		return
 	var collider: Interactable = interact_raycast.get_collider() as Interactable
 	if collider:
 		interact_label.visible = true
@@ -119,14 +132,17 @@ func check_interactables():
 
 
 func sit(armchair: Armchair):
+	set_camera_fov(40.0)
+	interact_label.visible = false
+	sit_sound_player.play()
+	standup_sound_player.stop()
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	collision_layer = 0
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	tv_on.emit()
-	global_position = armchair.global_position 
-	global_position.y -= 0.5
+	sit_tween_position(armchair.global_position - Vector3(0,0.5,0), 0) 
 	state = State.SITTING
 	global_rotation.y = armchair.global_rotation.y + PI
 	camera.global_rotation.x = 0.0
@@ -134,28 +150,45 @@ func sit(armchair: Armchair):
 
 
 func stand_up():
+	set_camera_fov(75)
+	standup_sound_player.play(0.0)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	await get_tree().physics_frame
-	tv_off.emit()
-	global_position -= global_basis.z*0.5
-	global_position.y += 0.5
+	#tv_off.emit()
+	sit_tween_position(global_position - global_basis.z*0.5 + Vector3(0,0.5,0), 1)
 	state = State.WALKING
 	switch_channel_label.visible = false
-	collision_layer = 1
+
+
+func set_camera_fov(fov: float):
+	if camera_fov_tween and camera_fov_tween.is_running():
+		camera_fov_tween.kill()
+	camera_fov_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	camera_fov_tween.tween_property(camera, "fov", fov, 0.5)
+
+
+func sit_tween_position(new_position: Vector3, layer: int):
+	if sitting_tween and sitting_tween.is_running():
+		sitting_tween.kill()
+	sitting_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	sitting_tween.tween_property(self, "global_position", new_position, 0.5)
+	sitting_tween.tween_property(self, "collision_layer", layer, 0.0)
 
 
 func start_pissing(toilet: Toilet):
-	global_position = toilet.global_position - toilet.global_basis.x*0.6
+	interact_label.visible = false
+	sit_tween_position(toilet.global_position - toilet.global_basis.x*0.6, 1)
 	state = State.BUSY
 	pissing_particles.emitting = true
 	global_rotation.y = toilet.global_rotation.y - PI/2.0
 	camera.rotation.x = -0.7
 	var tween = create_tween()
 	tween.tween_property(self, "piss", 0.0, 10.0)
-	
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(0.3).timeout
+	piss_sound_player.play(0.0)
+	await get_tree().create_timer(9.7).timeout
 	pissing_particles.emitting = false
 	state = State.WALKING
 	

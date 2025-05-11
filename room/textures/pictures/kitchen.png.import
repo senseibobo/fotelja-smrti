@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iitmd0fxoi3p"
-path.s3tc="res://.godot/imported/wallTexture.png-f5652122c325cb5283b9db33352f4262.s3tc.ctex"
+uid="uid://cmchg1juhklm"
+path.s3tc="res://.godot/imported/kitchen.png-8acaad434ebbf7251802d3249bf76d0f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://room/wallTexture.png"
-dest_files=["res://.godot/imported/wallTexture.png-f5652122c325cb5283b9db33352f4262.s3tc.ctex"]
+source_file="res://room/textures/pictures/kitchen.png"
+dest_files=["res://.godot/imported/kitchen.png-8acaad434ebbf7251802d3249bf76d0f.s3tc.ctex"]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

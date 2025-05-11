@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://domttwl2er84k"
-path.s3tc="res://.godot/imported/bathroomTilesTextureNormal.png-427dd1457174a902581ff92003f15668.s3tc.ctex"
+uid="uid://dffms6oh4vwcr"
+path.s3tc="res://.godot/imported/screaming_goat.png-7b6674d00daf30804087323f3e908726.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://room/bathroomTilesTextureNormal.png"
-dest_files=["res://.godot/imported/bathroomTilesTextureNormal.png-427dd1457174a902581ff92003f15668.s3tc.ctex"]
+source_file="res://room/textures/pictures/screaming_goat.png"
+dest_files=["res://.godot/imported/screaming_goat.png-7b6674d00daf30804087323f3e908726.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://room/bathroomTilesTextureNormal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

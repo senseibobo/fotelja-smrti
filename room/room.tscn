@@ -1,24 +1,33 @@
-[gd_scene load_steps=29 format=3 uid="uid://pfix7orqgna"]
+[gd_scene load_steps=39 format=3 uid="uid://pfix7orqgna"]
 
 [ext_resource type="Script" uid="uid://26b00e6oi77x" path="res://room/room.gd" id="1_fntg6"]
 [ext_resource type="PackedScene" uid="uid://nf5a3sjovupa" path="res://player/player.tscn" id="1_ppkfq"]
 [ext_resource type="PackedScene" uid="uid://fko0x41bn1in" path="res://objects/armchair/armchair.tscn" id="3_fsy70"]
 [ext_resource type="PackedScene" uid="uid://bbhane6h8syip" path="res://objects/tv/tv.tscn" id="4_tku2a"]
-[ext_resource type="Texture2D" uid="uid://iitmd0fxoi3p" path="res://room/wallTexture.png" id="5_acpa7"]
+[ext_resource type="Texture2D" uid="uid://iitmd0fxoi3p" path="res://room/textures/layout/wallTexture.png" id="5_acpa7"]
 [ext_resource type="PackedScene" uid="uid://8ewi7j66mf0r" path="res://objects/toilet/toilet.tscn" id="5_et4wo"]
-[ext_resource type="Texture2D" uid="uid://1vw1vhc7atje" path="res://room/wallTextureNormal.png" id="5_hhhe8"]
+[ext_resource type="Texture2D" uid="uid://1vw1vhc7atje" path="res://room/textures/layout/wallTextureNormal.png" id="5_hhhe8"]
 [ext_resource type="PackedScene" uid="uid://ndq4jmibytin" path="res://objects/shelf/tvshelf.glb" id="5_qx3y5"]
-[ext_resource type="Texture2D" uid="uid://bxb5rhlhjhw0g" path="res://room/bathroomTilesTexture.png" id="6_ltqu5"]
-[ext_resource type="Texture2D" uid="uid://1r5sxj1sky5s" path="res://room/kitchenTexture.png" id="7_ew6p8"]
-[ext_resource type="Texture2D" uid="uid://domttwl2er84k" path="res://room/bathroomTilesTextureNormal.png" id="7_ylgym"]
+[ext_resource type="Texture2D" uid="uid://bxb5rhlhjhw0g" path="res://room/textures/layout/bathroomTilesTexture.png" id="6_ltqu5"]
+[ext_resource type="Texture2D" uid="uid://1r5sxj1sky5s" path="res://room/textures/layout/kitchenTexture.png" id="7_ew6p8"]
+[ext_resource type="Texture2D" uid="uid://domttwl2er84k" path="res://room/textures/layout/bathroomTilesTextureNormal.png" id="7_ylgym"]
 [ext_resource type="PackedScene" uid="uid://4xxwbli7paku" path="res://objects/door/door.tscn" id="8_cy34l"]
-[ext_resource type="Texture2D" uid="uid://dsqqoch6ig1ko" path="res://room/floorTexture.png" id="8_hhhe8"]
+[ext_resource type="Texture2D" uid="uid://dsqqoch6ig1ko" path="res://room/textures/layout/floorTexture.png" id="8_hhhe8"]
 [ext_resource type="PackedScene" uid="uid://oqcdvo3e3m2u" path="res://objects/oven/oven.tscn" id="9_lbx1e"]
 [ext_resource type="PackedScene" uid="uid://bgj2jslfgalax" path="res://objects/sink/sink.tscn" id="10_0i02g"]
-[ext_resource type="Texture2D" uid="uid://b873yhxvcdx5n" path="res://room/floorTextureNormal.png" id="10_1f5bx"]
+[ext_resource type="Texture2D" uid="uid://b873yhxvcdx5n" path="res://room/textures/layout/floorTextureNormal.png" id="10_1f5bx"]
+[ext_resource type="Texture2D" uid="uid://dao4f4di4kj6l" path="res://room/textures/layout/floorTilesTexture.png" id="11_t7uvn"]
 [ext_resource type="PackedScene" uid="uid://c30wjs7da7sd4" path="res://objects/fridge/fridge.tscn" id="11_wid0f"]
+[ext_resource type="Texture2D" uid="uid://3itjrhnp2nam" path="res://room/textures/layout/floorTilesTextureNormal.png" id="12_3jil5"]
 [ext_resource type="PackedScene" uid="uid://b0ccnjqbecypt" path="res://objects/ceiling_light/ceiling_light.tscn" id="12_158eg"]
 [ext_resource type="PackedScene" uid="uid://rr0xq1axrxvj" path="res://objects/table/table.tscn" id="13_t7mnq"]
+[ext_resource type="Texture2D" uid="uid://dmekbch64x56h" path="res://room/textures/pictures/picture_frame.png" id="22_3jil5"]
+[ext_resource type="Texture2D" uid="uid://bdx4xbuwe21fq" path="res://room/textures/pictures/mona_lisa.png" id="23_u0gyo"]
+[ext_resource type="Texture2D" uid="uid://dffms6oh4vwcr" path="res://room/textures/pictures/screaming_goat.png" id="24_l2sa6"]
+[ext_resource type="Texture2D" uid="uid://c55r1ha4j3rwn" path="res://room/textures/pictures/juno_kilometar.png" id="25_8yrns"]
+[ext_resource type="Texture2D" uid="uid://cmchg1juhklm" path="res://room/textures/pictures/kitchen.png" id="26_7173y"]
+[ext_resource type="Texture2D" uid="uid://c2rv6vogas5y2" path="res://room/textures/decoration/mold.png" id="27_uubpm"]
+[ext_resource type="Texture2D" uid="uid://cvhjt7iv0x52v" path="res://room/textures/decoration/C.png" id="28_jk3xy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ew6p8"]
 sky_top_color = Color(0, 0.00933332, 0.28, 1)
@@ -61,6 +70,14 @@ albedo_texture = ExtResource("8_hhhe8")
 normal_enabled = true
 normal_scale = -1.0
 normal_texture = ExtResource("10_1f5bx")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0gyo"]
+albedo_color = Color(0.71875, 0.654836, 0.432759, 1)
+albedo_texture = ExtResource("11_t7uvn")
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("12_3jil5")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7mnq"]
@@ -119,12 +136,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97935, 1.00397, -1.44131)
 flip_faces = true
 size = Vector3(0.596839, 2, 0.7)
 
-[node name="Floor" type="CSGBox3D" parent="RoomLayout"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05369, -0.239319, -2.85864)
+[node name="Parket" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05369, -0.239319, 0.815526)
 operation = 2
 flip_faces = true
-size = Vector3(27.4585, 0.521362, 15.2037)
+size = Vector3(27.4585, 0.521362, 7.85537)
 material = SubResource("StandardMaterial3D_1f5bx")
+
+[node name="TilesFloor" type="CSGBox3D" parent="RoomLayout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05369, -0.294494, -7.01173)
+operation = 2
+flip_faces = true
+size = Vector3(27.4585, 0.676208, 7.81245)
+material = SubResource("StandardMaterial3D_u0gyo")
 
 [node name="Ceiling" type="CSGBox3D" parent="RoomLayout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05369, 3.57272, -2.85864)
@@ -139,8 +163,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78211, 0.0213624, -1.9065)
 [node name="tvshelf" parent="." instance=ExtResource("5_qx3y5")]
 transform = Transform3D(-3.28344e-08, 0, 0.751163, 0, 0.751163, 0, -0.751163, 0, -3.28344e-08, 1.46461, 0.379431, 1.2845)
 
-[node name="TV" parent="tvshelf" instance=ExtResource("4_tku2a")]
+[node name="TV" parent="tvshelf" node_paths=PackedStringArray("player") instance=ExtResource("4_tku2a")]
 transform = Transform3D(1.33127, 0, -7.10543e-15, 0, 1.33127, 0, 7.10543e-15, 0, 1.33127, 0.00916323, 0.509217, 0.0800091)
+player = NodePath("../../Player")
 
 [node name="Door" parent="." instance=ExtResource("8_cy34l")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.86449, 0.0347809, -1.79243)
@@ -171,6 +196,76 @@ player = NodePath("../Player")
 
 [node name="Table" parent="." instance=ExtResource("13_t7mnq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.121357, 0.0614551, -0.593084)
+
+[node name="Pictures" type="Node3D" parent="."]
+
+[node name="PictureFrame" type="Sprite3D" parent="Pictures"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449241, 2.01023, 1.56554)
+pixel_size = 0.0014
+shaded = true
+texture = ExtResource("22_3jil5")
+
+[node name="MonaLisa" type="Sprite3D" parent="Pictures/PictureFrame"]
+transform = Transform3D(-0.225514, 0, 1.90652e-08, 0, 0.190438, 0, -1.97151e-08, 0, -0.218081, 0, 0, 0)
+shaded = true
+texture = ExtResource("23_u0gyo")
+
+[node name="PictureFrame2" type="Sprite3D" parent="Pictures"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7865, 2.01023, 1.56554)
+pixel_size = 0.0014
+shaded = true
+texture = ExtResource("22_3jil5")
+
+[node name="ScreamingGoat" type="Sprite3D" parent="Pictures/PictureFrame2"]
+transform = Transform3D(-0.179669, 0, 1.90652e-08, 0, 0.350421, 0, -1.57072e-08, 0, -0.218081, 0, 0, 0)
+shaded = true
+texture = ExtResource("24_l2sa6")
+
+[node name="PictureFrame3" type="Sprite3D" parent="Pictures"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.8189, 2.01023, 0.143684)
+pixel_size = 0.0014
+shaded = true
+texture = ExtResource("22_3jil5")
+
+[node name="ScreamingGoat" type="Sprite3D" parent="Pictures/PictureFrame3"]
+transform = Transform3D(-0.138578, 0, 1.90652e-08, 0, 0.315208, 0, -1.21149e-08, 0, -0.218081, 0, 0, 0)
+shaded = true
+texture = ExtResource("25_8yrns")
+
+[node name="PictureFrame4" type="Sprite3D" parent="Pictures"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.6811, 1.76593, -4.84738)
+pixel_size = 0.0014
+shaded = true
+texture = ExtResource("22_3jil5")
+
+[node name="ScreamingGoat" type="Sprite3D" parent="Pictures/PictureFrame4"]
+transform = Transform3D(-0.111613, 0, 1.90652e-08, 0, 0.108498, 0, -9.75751e-09, 0, -0.218081, 0, 0, 0)
+shaded = true
+texture = ExtResource("26_7173y")
+
+[node name="Mold" type="Node3D" parent="."]
+
+[node name="Mold" type="Sprite3D" parent="Mold"]
+transform = Transform3D(-2.1175e-08, 0, 0.484428, 0, 0.484428, 0, -0.484428, 0, -2.1175e-08, -1.26115, 2.92036, 0.777316)
+shaded = true
+texture = ExtResource("27_uubpm")
+
+[node name="Mold2" type="Sprite3D" parent="Mold"]
+transform = Transform3D(-2.1175e-08, 0, 0.484428, 0, 0.484428, 0, -0.484428, 0, -2.1175e-08, -1.26115, 2.92036, -0.713531)
+shaded = true
+texture = ExtResource("27_uubpm")
+
+[node name="Cobwebs" type="Node3D" parent="."]
+
+[node name="Cobweb" type="Sprite3D" parent="Cobwebs"]
+transform = Transform3D(-0.060124, 0.0694252, -0.104138, 0.0347126, 0.120248, 0.060124, 0.120248, 0, -0.0694252, -1.12703, 3.1505, -2.44596)
+shaded = true
+texture = ExtResource("28_jk3xy")
+
+[node name="Cobweb2" type="Sprite3D" parent="Cobwebs"]
+transform = Transform3D(0.112193, -0.060124, 0.0554733, 0.0347126, 0.120248, 0.060124, -0.0740758, -0.0347126, 0.112193, 2.12647, 0.461401, 1.42731)
+shaded = true
+texture = ExtResource("28_jk3xy")
 
 [connection signal="channel_back" from="Player" to="tvshelf/TV" method="previous_channel"]
 [connection signal="channel_forward" from="Player" to="tvshelf/TV" method="next_channel"]
