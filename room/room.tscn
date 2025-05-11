@@ -92,6 +92,7 @@ armchair = NodePath("Armchair")
 tv = NodePath("tvshelf/TV")
 
 [node name="Player" parent="." instance=ExtResource("1_ppkfq")]
+speed = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qx3y5")

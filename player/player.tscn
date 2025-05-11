@@ -370,6 +370,7 @@ piss_sound_player = NodePath("PissingSoundPlayer")
 standup_sound_player = NodePath("StandupSoundPlayer")
 insanity_sound_player = NodePath("InsanitySoundPlayer")
 sit_sound_player = NodePath("SitSoundPlayer")
+speed = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -522,7 +523,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("5_qjkh3")
 
-[node name="DeathScreen" type="ColorRect" parent="HUD" node_paths=PackedStringArray("reason_label", "press_any_button_label")]
+[node name="DeathScreen" type="ColorRect" parent="HUD" node_paths=PackedStringArray("reason_label", "time_label", "press_any_button_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -530,24 +531,30 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.713726)
 script = ExtResource("6_c35mf")
-reason_label = NodePath("DeathReason")
+reason_label = NodePath("VBoxContainer/DeathReason")
+time_label = NodePath("VBoxContainer/SurvivalTime")
 press_any_button_label = NodePath("PressAnyButton")
 
-[node name="DeathReason" type="Label" parent="HUD/DeathScreen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/DeathScreen"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="DeathReason" type="Label" parent="HUD/DeathScreen/VBoxContainer"]
+layout_mode = 2
 text = "You died from a dopamine shortage."
 label_settings = SubResource("LabelSettings_c35mf")
+horizontal_alignment = 1
+
+[node name="SurvivalTime" type="Label" parent="HUD/DeathScreen/VBoxContainer"]
+layout_mode = 2
+text = "You survived X seconds."
+label_settings = SubResource("LabelSettings_c35mf")
+horizontal_alignment = 1
 
 [node name="PressAnyButton" type="Label" parent="HUD/DeathScreen"]
 layout_mode = 1
@@ -557,9 +564,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -118.5
-offset_top = 44.5
+offset_top = 84.5
 offset_right = 118.5
-offset_bottom = 67.5
+offset_bottom = 107.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press any button to continue..."
@@ -590,7 +597,8 @@ stream = ExtResource("15_g4c7l")
 
 [node name="StandupSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_knn7v")
-volume_db = 8.0
+volume_db = 13.725
+pitch_scale = 0.9
 
 [node name="PissingSoundPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("17_7pqkx")

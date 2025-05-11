@@ -48,6 +48,8 @@ var hunger_rate: float = 0.008
 var entertainment_rate: float = 0.2
 var piss_rate: float = 0.0035
 
+var time_alive: float = 0.0
+
 
 var state: State = State.WALKING
 
@@ -60,6 +62,17 @@ func _ready():
 	interact_label.visible = false
 	switch_channel_label.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	var tween = create_tween().set_parallel()
+	tween.tween_interval(4.0)
+	tween.chain()
+	tween.tween_property(piss_label, "modulate:a", 0.0, 0.5)
+	tween.tween_property(hunger_label, "modulate:a", 0.0, 0.5)
+	tween.tween_property(thirst_label, "modulate:a", 0.0, 0.5)
+
+
+func _process(delta):
+	if state != State.DYING:
+		time_alive += delta
 
 
 func _physics_process(delta):
@@ -147,7 +160,7 @@ func die(reason: String):
 		tween.tween_property(camera, "global_position", camera.global_position-global_basis.z*0.4 + Vector3(0,-1.7,0), 0.5)
 	state = State.DYING
 	await tween.finished
-	death_screen.show_death(reason)
+	death_screen.show_death(reason, time_alive)
 
 
 func check_interactables():
