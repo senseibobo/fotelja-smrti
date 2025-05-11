@@ -3,18 +3,21 @@ extends Node3D
 
 
 const channels: Array[VideoStreamTheora] = [
+	preload("res://objects/tv/channels/0.0-90.0.ogv"),
+	preload("res://objects/tv/channels/10.0-100.0.ogv"),
 	preload("res://objects/tv/channels/152.0-245.0.ogv"),
 	preload("res://objects/tv/channels/1917.0-2172.0.ogv"),
-	preload("res://objects/tv/channels/Alo, predsedniče... - Nikad izvini.ogv"),
 	preload("res://objects/tv/channels/Džudžubana viski - Nikad izvini.ogv"),
 	preload("res://objects/tv/channels/gen z meme compilation.ogv"),
+	preload("res://objects/tv/channels/Juno Kilometar - svraka (Official video).ogv"),
 	preload("res://objects/tv/channels/Tralalero tralala VS Lirili Larila.ogv"),
+	preload("res://objects/tv/channels/When youre overqualified for the job.ogv")
 ]
 
 @export var stream_player: VideoStreamPlayer
 @export var player: Player
 
-var current_channel: int = 3
+var current_channel: int = 4
 
 var on: bool = false
 var reverb_effect: AudioEffectReverb

@@ -9,6 +9,7 @@ signal tv_off
 
 enum State {
 	WALKING,
+	PISSING,
 	SITTING,
 	BUSY,
 	DYING
@@ -80,6 +81,7 @@ func _physics_process(delta):
 		State.WALKING: _process_walking(delta)
 		State.SITTING: _process_sitting(delta)
 		State.BUSY: _process_busy(delta)
+		State.PISSING: _process_pissing(delta)
 
 
 func _process_walking(delta):
@@ -95,6 +97,7 @@ func _process_walking(delta):
 
 func _process_sitting(delta):
 	_process_needs(delta)
+	check_interactables()
 	if Input.is_action_just_pressed("interact"):
 		stand_up()
 	elif Input.is_action_just_pressed("channel_forward"):
@@ -105,6 +108,17 @@ func _process_sitting(delta):
 
 func _process_busy(delta):
 	_process_needs(delta)
+
+
+func _process_pissing(delta):
+	_process_needs(delta)
+	piss -= delta*piss_rate*6.0*time_multiplier
+	if piss <= 0:
+		piss = 0
+		stop_pissing()
+	if Input.is_action_just_pressed("interact"):
+		stop_pissing.call_deferred()
+	check_interactables()
 
 
 func _process_needs(delta):
@@ -225,18 +239,20 @@ func sit_tween_position(new_position: Vector3, layer: int):
 func start_pissing(toilet: Toilet):
 	interact_label.visible = false
 	sit_tween_position(toilet.global_position - toilet.global_basis.x*0.6, 1)
-	state = State.BUSY
+	state = State.PISSING
 	pissing_particles.emitting = true
 	global_rotation.y = toilet.global_rotation.y - PI/2.0
 	camera.rotation.x = -0.7
-	var tween = create_tween()
-	tween.tween_property(self, "piss", 0.0, 10.0)
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.5).timeout
 	piss_sound_player.play(0.0)
-	await get_tree().create_timer(9.7).timeout
-	pissing_particles.emitting = false
+
+
+func stop_pissing():
 	state = State.WALKING
-	
+	pissing_particles.emitting = false
+	await get_tree().create_timer(0.5).timeout
+	piss_sound_player.stop()
+
 	
 func eat():
 	animation_player.play(&"eat")
