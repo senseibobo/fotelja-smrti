@@ -11,6 +11,7 @@ enum State {
 	WALKING,
 	SITTING,
 	BUSY,
+	DYING
 }
 
 
@@ -21,7 +22,11 @@ enum State {
 @export var pissing_particles: GPUParticles3D
 @export var blood_overlay: BloodOverlay
 @export var animation_player: AnimationPlayer
+@export var death_screen: DeathScreen
 
+@export var thirst_label: Label
+@export var hunger_label: Label
+@export var piss_label: Label
 
 @export var piss_sound_player: AudioStreamPlayer3D
 @export var standup_sound_player: AudioStreamPlayer
@@ -92,17 +97,29 @@ func _process_busy(delta):
 func _process_needs(delta):
 	time_multiplier += delta*0.015
 	thirst += thirst_rate*delta*time_multiplier
+	if thirst >= 1.0:
+		die("You died from thirst.")
+		return
 	thirst = clamp(thirst, 0.0, 1.0)
 	hunger += hunger_rate*delta*time_multiplier
+	if hunger >= 1.0:
+		die("You died from hunger.")
+		return
 	hunger = clamp(hunger, 0.0, 1.0)
 	entertainment -= entertainment_rate*delta*time_multiplier
 	entertainment = clamp(entertainment, 0.0, 1.0)
 	piss += piss_rate*delta*time_multiplier
+	if piss >= 1.0:
+		die("Your bladder exploded.")
+		return
 	piss = clamp(piss, 0.0, 1.0)
 	if state == State.WALKING:
 		sanity -= (2.0 - entertainment)*insanity_rate*delta*time_multiplier
 	elif state == State.SITTING:
 		sanity += 5*insanity_rate*delta
+	if sanity <= 0:
+		die("You died from a dopamine shortage.")
+		return
 	sanity = clamp(sanity, 0.0, 1.0)
 	blood_overlay.strength = 1.0-sanity
 	
@@ -116,6 +133,21 @@ func _unhandled_input(event: InputEvent):
 			camera.rotation_degrees.x = clamp(
 				camera.rotation_degrees.x, -80, 80
 			)
+
+
+func die(reason: String):
+	var tween = create_tween()
+	collision_layer = 0
+	if state == State.SITTING:
+		tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(camera, "rotation_degrees:x", 60.0, 0.5)
+	else:
+		tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(camera, "rotation_degrees:x", 80.0, 0.5)
+		tween.tween_property(camera, "global_position", camera.global_position-global_basis.z*0.4 + Vector3(0,-1.7,0), 0.5)
+	state = State.DYING
+	await tween.finished
+	death_screen.show_death(reason)
 
 
 func check_interactables():

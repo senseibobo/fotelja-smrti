@@ -37,7 +37,7 @@ sky_material = SubResource("ProceduralSkyMaterial_ew6p8")
 
 [sub_resource type="Environment" id="Environment_qx3y5"]
 background_mode = 2
-background_energy_multiplier = 0.6
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_hhhe8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltqu5"]
@@ -266,6 +266,10 @@ texture = ExtResource("28_jk3xy")
 transform = Transform3D(0.112193, -0.060124, 0.0554733, 0.0347126, 0.120248, 0.060124, -0.0740758, -0.0347126, 0.112193, 2.12647, 0.461401, 1.42731)
 shaded = true
 texture = ExtResource("28_jk3xy")
+
+[node name="TitleCamera" type="Camera3D" parent="."]
+transform = Transform3D(-0.894934, 0.181485, -0.407622, 0, 0.913545, 0.406737, 0.446198, 0.364003, -0.817563, 0.71, 2.105, -1.045)
+fov = 116.5
 
 [connection signal="channel_back" from="Player" to="tvshelf/TV" method="previous_channel"]
 [connection signal="channel_forward" from="Player" to="tvshelf/TV" method="next_channel"]

@@ -19,4 +19,5 @@ func enable_start():
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if startable and event.pressed:
+			startable = false
 			Transition.transition(preload("res://room/room.tscn"))

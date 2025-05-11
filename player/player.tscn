@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://nf5a3sjovupa"]
+[gd_scene load_steps=34 format=3 uid="uid://nf5a3sjovupa"]
 
 [ext_resource type="Script" uid="uid://bkg7dwgs1xmoc" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://b6cwqfwh7btid" path="res://ui/bar/bar.tscn" id="2_rkbax"]
 [ext_resource type="Shader" uid="uid://b5kw13ad5fack" path="res://player/blood.gdshader" id="3_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://do6dhlhlfhjyo" path="res://ui/bloodvessels.png" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://b0y6r28p4tc0t" path="res://player/blood_overlay.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://b2jdormchcdj" path="res://player/death_screen.gd" id="6_c35mf"]
 [ext_resource type="AudioStream" uid="uid://dqny5sf5io8d2" path="res://sounds/drinking.ogg" id="6_e7oew"]
 [ext_resource type="PackedScene" uid="uid://d1r8kp5uk1yyj" path="res://objects/bread/bread.glb" id="6_g6k8r"]
 [ext_resource type="AudioStream" uid="uid://11vnrqnxyab1" path="res://sounds/gulp.ogg" id="7_c35mf"]
@@ -42,10 +43,24 @@ billboard_mode = 1
 material = SubResource("StandardMaterial3D_rkbax")
 size = Vector2(0.07, 0.11)
 
+[sub_resource type="LabelSettings" id="LabelSettings_e7oew"]
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yw30f"]
 shader = ExtResource("3_g1dw6")
 shader_parameter/bloodTexture = ExtResource("4_yw30f")
 shader_parameter/strength = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_c35mf"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+shadow_size = 36
+shadow_color = Color(0, 0, 0, 0.482353)
+shadow_offset = Vector2(2.42, 3.135)
+
+[sub_resource type="LabelSettings" id="LabelSettings_65viv"]
 
 [sub_resource type="Animation" id="Animation_g6k8r"]
 length = 0.001
@@ -152,6 +167,18 @@ tracks/8/path = NodePath("Glass:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -326,7 +353,7 @@ _data = {
 &"eat": SubResource("Animation_boad6")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "interact_raycast", "interact_label", "switch_channel_label", "pissing_particles", "blood_overlay", "animation_player", "piss_sound_player", "standup_sound_player", "insanity_sound_player", "sit_sound_player")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "interact_raycast", "interact_label", "switch_channel_label", "pissing_particles", "blood_overlay", "animation_player", "death_screen", "thirst_label", "hunger_label", "piss_label", "piss_sound_player", "standup_sound_player", "insanity_sound_player", "sit_sound_player")]
 script = ExtResource("1_oul6g")
 camera = NodePath("Camera3D")
 interact_raycast = NodePath("Camera3D/InteractRaycast")
@@ -335,6 +362,10 @@ switch_channel_label = NodePath("HUD/Control/SwitchChannelLabel")
 pissing_particles = NodePath("PissingParticles")
 blood_overlay = NodePath("HUD/Control/BloodOverlay")
 animation_player = NodePath("AnimationPlayer")
+death_screen = NodePath("HUD/DeathScreen")
+thirst_label = NodePath("HUD/Control/ThirstBar/ThirstLabel")
+hunger_label = NodePath("HUD/Control/HungerBar/HungerLabel")
+piss_label = NodePath("HUD/Control/PissBar/PissLabel")
 piss_sound_player = NodePath("PissingSoundPlayer")
 standup_sound_player = NodePath("StandupSoundPlayer")
 insanity_sound_player = NodePath("InsanitySoundPlayer")
@@ -419,6 +450,21 @@ node = NodePath("../../..")
 property = &"thirst"
 color = Color(0, 0.686275, 1, 1)
 
+[node name="ThirstLabel" type="Label" parent="HUD/Control/ThirstBar"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -7.0
+offset_right = 185.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Thirst "
+label_settings = SubResource("LabelSettings_e7oew")
+
 [node name="HungerBar" parent="HUD/Control" node_paths=PackedStringArray("node") instance=ExtResource("2_rkbax")]
 layout_mode = 1
 offset_top = -66.0
@@ -427,6 +473,21 @@ node = NodePath("../../..")
 property = &"hunger"
 color = Color(0.509526, 0.453665, 0.240503, 1)
 
+[node name="HungerLabel" type="Label" parent="HUD/Control/HungerBar"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -7.0
+offset_right = 185.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Hunger"
+label_settings = SubResource("LabelSettings_e7oew")
+
 [node name="PissBar" parent="HUD/Control" node_paths=PackedStringArray("node") instance=ExtResource("2_rkbax")]
 layout_mode = 1
 offset_top = -90.0
@@ -434,6 +495,21 @@ offset_bottom = -80.0
 node = NodePath("../../..")
 property = &"piss"
 color = Color(0.898454, 0.884247, 0.205776, 1)
+
+[node name="PissLabel" type="Label" parent="HUD/Control/PissBar"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -7.0
+offset_right = 185.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Urine"
+label_settings = SubResource("LabelSettings_e7oew")
 
 [node name="BloodOverlay" type="ColorRect" parent="HUD/Control"]
 material = SubResource("ShaderMaterial_yw30f")
@@ -445,6 +521,49 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("5_qjkh3")
+
+[node name="DeathScreen" type="ColorRect" parent="HUD" node_paths=PackedStringArray("reason_label", "press_any_button_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.713726)
+script = ExtResource("6_c35mf")
+reason_label = NodePath("DeathReason")
+press_any_button_label = NodePath("PressAnyButton")
+
+[node name="DeathReason" type="Label" parent="HUD/DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You died from a dopamine shortage."
+label_settings = SubResource("LabelSettings_c35mf")
+
+[node name="PressAnyButton" type="Label" parent="HUD/DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = 44.5
+offset_right = 118.5
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press any button to continue..."
+label_settings = SubResource("LabelSettings_65viv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
