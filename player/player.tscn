@@ -353,7 +353,7 @@ _data = {
 &"eat": SubResource("Animation_boad6")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "interact_raycast", "interact_label", "switch_channel_label", "pissing_particles", "blood_overlay", "animation_player", "death_screen", "thirst_label", "hunger_label", "piss_label", "piss_sound_player", "standup_sound_player", "insanity_sound_player", "sit_sound_player")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "interact_raycast", "interact_label", "switch_channel_label", "pissing_particles", "blood_overlay", "animation_player", "death_screen", "thirst_label", "hunger_label", "piss_label", "stop_pissing_label", "piss_sound_player", "standup_sound_player", "insanity_sound_player", "sit_sound_player")]
 script = ExtResource("1_oul6g")
 camera = NodePath("Camera3D")
 interact_raycast = NodePath("Camera3D/InteractRaycast")
@@ -366,6 +366,7 @@ death_screen = NodePath("HUD/DeathScreen")
 thirst_label = NodePath("HUD/Control/ThirstBar/ThirstLabel")
 hunger_label = NodePath("HUD/Control/HungerBar/HungerLabel")
 piss_label = NodePath("HUD/Control/PissBar/PissLabel")
+stop_pissing_label = NodePath("HUD/Control/StopPissingLabel")
 piss_sound_player = NodePath("PissingSoundPlayer")
 standup_sound_player = NodePath("StandupSoundPlayer")
 insanity_sound_player = NodePath("InsanitySoundPlayer")
@@ -443,6 +444,23 @@ theme_override_font_sizes/font_size = 32
 text = "A - Previous Channel
 D - Next Channel
 E - Stand Up"
+
+[node name="StopPissingLabel" type="Label" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -332.0
+offset_top = -60.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "E - Stop Urinating"
 
 [node name="ThirstBar" parent="HUD/Control" node_paths=PackedStringArray("node") instance=ExtResource("2_rkbax")]
 layout_mode = 1

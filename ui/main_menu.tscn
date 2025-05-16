@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://ch1yvghipbqlx"]
 
 [ext_resource type="Script" uid="uid://cmj43ggpx0ks0" path="res://ui/main_menu.gd" id="1_t7e0r"]
-[ext_resource type="FontFile" uid="uid://b1tta22h3kwup" path="res://ui/Le Mano.ttf" id="2_0dkrt"]
 [ext_resource type="Texture2D" uid="uid://b5c7xrhcelfp8" path="res://ui/fotelja_smrti_title_screen.jpg" id="2_wk0pr"]
+[ext_resource type="FontFile" uid="uid://dfm3kc06y3qnf" path="res://ui/Super Rugged.ttf" id="3_wk0pr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wk0pr"]
-font = ExtResource("2_0dkrt")
+font = ExtResource("3_wk0pr")
 font_size = 96
 font_color = Color(0, 0, 0, 1)
 outline_size = 8

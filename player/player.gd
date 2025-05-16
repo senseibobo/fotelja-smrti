@@ -28,6 +28,7 @@ enum State {
 @export var thirst_label: Label
 @export var hunger_label: Label
 @export var piss_label: Label
+@export var stop_pissing_label: Label
 
 @export var piss_sound_player: AudioStreamPlayer3D
 @export var standup_sound_player: AudioStreamPlayer
@@ -59,6 +60,7 @@ var sitting_tween: Tween
 
 
 func _ready():
+	stop_pissing_label.visible = false
 	pissing_particles.emitting = false
 	interact_label.visible = false
 	switch_channel_label.visible = false
@@ -163,6 +165,8 @@ func _unhandled_input(event: InputEvent):
 
 
 func die(reason: String):
+	if state == State.PISSING:
+		stop_pissing()
 	var tween = create_tween()
 	collision_layer = 0
 	if state == State.SITTING:
@@ -237,6 +241,7 @@ func sit_tween_position(new_position: Vector3, layer: int):
 
 
 func start_pissing(toilet: Toilet):
+	stop_pissing_label.visible = true
 	interact_label.visible = false
 	sit_tween_position(toilet.global_position - toilet.global_basis.x*0.6, 1)
 	state = State.PISSING
@@ -248,6 +253,7 @@ func start_pissing(toilet: Toilet):
 
 
 func stop_pissing():
+	stop_pissing_label.visible = false
 	state = State.WALKING
 	pissing_particles.emitting = false
 	await get_tree().create_timer(0.5).timeout

@@ -17,7 +17,7 @@ const channels: Array[VideoStreamTheora] = [
 @export var stream_player: VideoStreamPlayer
 @export var player: Player
 
-var current_channel: int = 4
+var current_channel: int = 5
 
 var on: bool = false
 var reverb_effect: AudioEffectReverb
